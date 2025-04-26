@@ -33,3 +33,27 @@ const MyFunction = function(){
 }
 
 // console.log(typeof Actors);
+
+
+// ********************************** 
+
+// Stack (Primitive), Heap (Non-Primitive)
+
+let myName = "ShubhamJain"
+
+let anotherName = myName
+anotherName = "HirakJain"
+
+console.log(myName);
+console.log(anotherName);
+
+let User1 = {
+    email : "user@ampverse.com",
+    upi : "user@gpay"
+}
+
+let User2 = User1
+User2.email = "user2@ampverse.com"
+
+console.log(User1.email);
+console.log(User2.email);
