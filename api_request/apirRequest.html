@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub User Card</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: aliceblue;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .username {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .followers {
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .profile-link {
+      text-decoration: none;
+      color: #4fa3ff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="card-container"></div>
+
+  <script>
+    const requestUrl = 'https://api.github.com/users/Shubham-Jain98';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        const data = JSON.parse(this.responseText);
+        
+        const cardHTML = `
+          <div class="card">
+            <img src="${data.avatar_url}" alt="Avatar" class="avatar">
+            <div class="username">${data.login}</div>
+            <div class="followers">Followers: ${data.followers}</div>
+            <a href="${data.html_url}" target="_blank" class="profile-link">View Profile</a>
+          </div>
+        `;
+        
+        document.getElementById('card-container').innerHTML = cardHTML;
+      }
+    };
+    xhr.send();
+  </script>
+</body>
+</html>
