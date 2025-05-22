@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
 </head>
 <body>
-    <h1>Chai aur Javascript</h1>
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
-</body>
-<script>
+  <h1>Javascript</h1>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+
+  <script>
+    let intervalId; // Global scope so both handlers can access it
+
     const sayDate = function(str){
-        console.log(str, Date.now());
+      console.log(str, new Date().toLocaleTimeString());
     }
 
-    const intervalId = setInterval(sayDate, 1000, "hi")
+    document.querySelector('#start').addEventListener('click', function(){
+      if (!intervalId) { 
+        intervalId = setInterval(sayDate, 1000, "hi");
+      }
+    });
 
-    clearInterval(intervalId)
-</script>
+    document.querySelector('#stop').addEventListener('click', function(){
+      clearInterval(intervalId);
+      intervalId = null; 
+    });
+  </script>
+</body>
 </html>
