@@ -14,10 +14,10 @@ class User {
 
 }
 
-const chai = new User("code", "code@gmail.com", "123")
+const code = new User("code", "code@gmail.com", "123")
 
-console.log(chai.encryptPassword());
-console.log(chai.changeUsername());
+console.log(code.encryptPassword());
+console.log(code.changeUsername());
 
 // behind the scene
 
@@ -35,7 +35,7 @@ User.prototype.changeUsername = function(){
 }
 
 
-const tea = new User("tea", "tea@gmail.com", "123")
+const somn = new User("tea", "tea@gmail.com", "123")
 
-console.log(tea.encryptPassword());
-console.log(tea.changeUsername());
+console.log(somn.encryptPassword());
+console.lo(somn.changeUsername());
